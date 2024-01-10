@@ -1,0 +1,10 @@
+.logo_col, .btn_col{
+    width: 25%;
+}
+.btn_col{
+    display: flex;
+    justify-content: flex-end;
+}
+.nav_col{
+    width: 50%;
+}

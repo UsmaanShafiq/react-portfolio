@@ -1,0 +1,15 @@
+.menu_list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav_wrapper .menu_list li a{
+    font-size: 18px;
+    line-height: 26px;
+    color: #292930;
+    font-weight: 500;
+    text-decoration: none;
+}
+.nav_wrapper .menu_list li:not(:last-child){
+    margin-right: 30px;
+}
