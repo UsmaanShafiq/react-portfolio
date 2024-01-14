@@ -1,0 +1,399 @@
+<?php
+/**
+ * Template for displaying single course
+ *
+ * @package Tutor\Templates
+ * @author Themeum <support@themeum.com>
+ * @link https://themeum.com
+ * @since 1.0.0
+ */
+
+$course_id     = get_the_ID();
+$course_rating = tutor_utils()->get_course_rating( $course_id );
+$is_enrolled   = tutor_utils()->is_enrolled( $course_id, get_current_user_id() );
+
+$product_id = tutor_utils()->get_course_product_id();
+$is_purchasable = tutor_utils()->is_course_purchasable();
+
+// Prepare the nav items.
+$course_nav_item = apply_filters( 'tutor_course/single/nav_items', tutor_utils()->course_nav_items(), $course_id );
+$is_public       = \TUTOR\Course_List::is_public( $course_id );
+$is_mobile       = wp_is_mobile();
+
+$enrollment_box_position = tutor_utils()->get_option( 'enrollment_box_position_in_mobile', 'bottom' );
+if ( '-1' === $enrollment_box_position ) {
+	$enrollment_box_position = 'bottom';
+}
+$student_must_login_to_view_course = tutor_utils()->get_option( 'student_must_login_to_view_course' );
+
+tutor_utils()->tutor_custom_header();
+
+if ( ! is_user_logged_in() && ! $is_public && $student_must_login_to_view_course ) {
+	tutor_load_template( 'login' );
+	tutor_utils()->tutor_custom_footer();
+	return;
+}
+
+$is_wish_listed    = tutor_utils()->is_wishlisted( $post->ID, get_current_user_id() );
+
+// eduhap_single_course_banner();
+
+$userIP = $_SERVER['REMOTE_ADDR'];
+$userData = file_get_contents("http://ipinfo.io/$userIP/geo");
+$userData = json_decode($userData, true);
+$selectedCountry = $userData['country'];
+$countryListAll = WC()->countries->get_allowed_countries();
+//print_r($countryListAll);
+?>
+
+<section class="page-header">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-xl-8">
+        <div class="title-block">
+          <h1><?php the_title();?></h1>
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item">
+              <a href="<?php echo esc_url(home_url('/'));?>"><?php eduhap_banner_home_text();?></a>
+            </li>
+            <li class="list-inline-item">/</li>
+			<li class="list-inline-item active">Course Detail</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-wrapper edutim-course-single edutim-course-content">
+<?php do_action( 'tutor_course/single/before/wrap' ); ?>
+<div <?php tutor_post_class( 'tutor-full-width-course-top tutor-course-top-info tutor-page-wrap tutor-wrap-parent' ); ?>>
+	<div class="tutor-course-details-page tutor-container">
+		<div class="tutor-row tutor-gx-xl-5">
+			<main class="tutor-col-xl-8">
+				<?php tutor_utils()->has_video_in_single() ? tutor_course_video() : get_tutor_course_thumbnail(); ?>
+				<?php do_action( 'tutor_course/single/before/inner-wrap' ); ?>
+				<?php ( isset( $is_enrolled ) && $is_enrolled ) ? tutor_course_enrolled_lead_info() : tutor_course_lead_info(); ?>
+				<?php if ( $is_mobile && 'top' === $enrollment_box_position ) : ?>
+					<div class="tutor-mt-32">
+						<?php tutor_load_template( 'single.course.course-entry-box' ); ?>
+					</div>
+				<?php endif; ?>
+				
+				<!-- About section -->
+				<div class="tutor-course-about-section">
+					<?php tutor_load_template( 'single.course.course-content' ); ?>
+				</div>
+				
+				<!-- Tabs section -->
+				<div class="tutor-course-details-tab tutor-mt-32">
+					<div class="tutor-is-sticky">
+						<nav class="tutor-nav" tutor-priority-nav>
+							<li class="tutor-nav-item">
+								<a class="tutor-nav-link is-active" href="#" data-tutor-nav-target="tutor-course-details-tab-course-curriculam">Course Curriculam</a>
+							</li>
+							<li class="tutor-nav-item">
+								<a class="tutor-nav-link" href="#" data-tutor-nav-target="tutor-course-details-tab-training-details">Training Details</a>
+							</li>
+						</nav>
+					</div>
+					
+					<div class="tutor-tab">
+						<div id="tutor-course-details-tab-course-curriculam" class="tutor-tab-item is-active">
+							<h3>Virtual Classroom Live</h3>
+							
+							<?php
+								$course_schedules = get_field('course_schedule', $course_id);
+								
+								if( !empty( $course_schedules ) ) {
+									$today = date( 'Ymd' );
+									
+									$scheduledCountries = array();
+									foreach( $course_schedules as $course_schedule ) {
+										if( ($course_schedule['course_schedule_code'] !== '') ){
+											$scheduledCountries[] = $course_schedule['schedule_country'];
+										}
+									}
+									
+									if( !in_array($selectedCountry, $scheduledCountries) ) {
+										$selectedCountry = 'US';
+									}
+									
+									$counter = 0;									
+									foreach( $course_schedules as $course_schedule ) {
+										if( ($course_schedule['course_schedule_code'] !== '') && ( $course_schedule['course_starting_date'] > $today) && ( $course_schedule['schedule_country'] == $selectedCountry) ){
+											$counter++;
+										}
+									}
+									switch ($selectedCountry) {
+									  case "IN":
+										$timezone = 'IST';
+										break;
+									  case "SG":
+										$timezone = 'SGT';
+										break;
+									  case "AU":
+										$timezone = 'AEST';
+										break;
+									  case "EU":
+										$timezone = 'GMT';
+										break;
+									  case "AE":
+										$timezone = 'GST';
+										break;
+									  default:
+										$timezone = 'ET';
+									}
+							?>
+							
+							<?php if( $counter > 0 ) { ?>
+							<div class="course-schedules-main">
+							  <div class="dc-course-schedules">
+								<select class="course-schedule" id="course_schedule">
+							<?php
+									foreach( $course_schedules as $course_schedule ) {
+										if( ($course_schedule['course_schedule_code'] !== '') && ( $course_schedule['course_starting_date'] > $today) && ( $course_schedule['schedule_country'] == $selectedCountry) ){
+											if( $course_schedule['delivery_formate']['value'] == 'classroom_live' ){
+												$delivery_formate = $course_schedule['delivery_formate']['label'];
+												//$class_location = $countryListAll[$course_schedule['schedule_country']];
+												$class_location = "Online";
+												$class_location_link = '';
+											} else {
+												$delivery_formate = 'Online';
+												$class_location = "Online";
+												$class_location_link = "";
+											}
+											
+											$datetime1 = new DateTime($course_schedule['course_starting_date']);
+											$datetime2 = new DateTime($course_schedule['course_ending_date']);
+											$difference = $datetime1->diff($datetime2);
+											$days = ($difference->d)+1;
+											$startingDate = date("M j", strtotime($course_schedule['course_starting_date']));
+											$courseTime = $course_schedule['class_starting_time'] . ' - ' . $course_schedule['class_ending_time'];
+											$courseDates = $startingDate . ' - ' . $course_schedule['course_ending_date'];
+							?>
+								<option value="<?= $course_schedule['course_schedule_code']; ?>" data-days="<?= $days; ?>" data-dates="<?= $courseDates; ?>" data-time="<?= $courseTime; ?>" data-formate="<?= $delivery_formate; ?>" data-location="<?= $class_location; ?>" data-location-link="<?= $class_location_link; ?>"><?= $course_schedule['delivery_formate']['label'] . ' | ' . $startingDate . ' - ' . $course_schedule['course_ending_date'] . ' | ' . $course_schedule['class_starting_time'] . ' - ' . $course_schedule['class_ending_time'] . ' ' . $timezone . ' | ' . $class_location . ' | ' . $countryListAll[$course_schedule['schedule_country']]; ?></option>
+							<?php
+										}
+									}
+							?>							
+								</select>
+								<div class="arrow"></div>
+							  </div>
+							</div>
+								
+							<?php
+								}
+							?>
+							
+							<?php
+								}
+							?>
+							
+							<?php
+								$right_course = get_field('right_course', $course_id);
+								if ( $right_course ) {
+							?>							
+							<h3>Prerequisites</h3>
+							<p><?= $right_course; ?></p>
+							<?php
+								}
+							?>
+							
+							<?php
+								$target_audience = tutor_course_target_audience();
+								if ( !empty( $target_audience ) ) {
+							?>
+							<h3>Target Audience</h3>
+							<ul class="tutor-course-details-widget-list tutor-fs-6 tutor-color-black">
+								<?php foreach ( $target_audience as $audience ) : ?>
+									<li class="tutor-d-flex tutor-mb-12">
+										<span class="tutor-icon-bullet-point tutor-color-muted tutor-mt-2 tutor-mr-8 tutor-fs-8" area-hidden="true"></span>
+										<span><?php echo esc_html( $audience ); ?></span>
+									</li>
+								<?php endforeach; ?>
+							</ul>
+							<?php
+								}
+							?>
+							
+							<div class="tutor-accordion tutor-mt-24">
+								<?php 
+									$course_benefits = tutor_course_benefits();
+									if ( !empty( $course_benefits ) ) {
+								?>
+								<div class="tutor-accordion-item">
+									<h5 class="tutor-accordion-item-header">
+										What You’ll Learn
+										<div class="tooltip-wrap">
+											<span class="tooltip-txt tooltip-right"><i class="fas fa-chevron-right"></i></span>
+										</div>
+									</h5>
+									<div class="tutor-accordion-item-body">
+										<div class="tutor-accordion-item-body-content">
+											<ul class="tutor-course-details-widget-list tutor-color-black tutor-fs-6 tutor-m-0 tutor-mt-16">
+												<?php foreach ( $course_benefits as $benefit ) : ?>
+													<li class="tutor-d-flex tutor-mb-12">
+														<span class="tutor-icon-bullet-point tutor-color-muted tutor-mt-2 tutor-mr-8 tutor-fs-8" area-hidden="true"></span>
+														<span><?php echo esc_html( $benefit ); ?></span>
+													</li>
+												<?php endforeach; ?>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<?php } ?>
+							</div>
+							
+							<div class="tutor-accordion tutor-mt-24">
+								<?php 
+									$course_outline = get_field('course_outline', $course_id);
+									if ( $course_outline ) {
+								?>
+								<div class="tutor-accordion-item">
+									<h5 class="tutor-accordion-item-header">
+										Course Outline
+										<div class="tooltip-wrap">
+											<span class="tooltip-txt tooltip-right"><i class="fas fa-chevron-right"></i></span>
+										</div>
+									</h5>
+									<div class="tutor-accordion-item-body" style="display: none;">
+										<div class="tutor-accordion-item-body-content">
+											<?= $course_outline; ?>
+										</div>
+									</div>
+								</div>
+								<?php } ?>
+							</div>
+							
+							<div class="tutor-accordion tutor-mt-24">
+								<?php 
+									$labs_outline = get_field('labs_outline', $course_id);
+									if ( $labs_outline ) {
+								?>
+								<div class="tutor-accordion-item">
+									<h5 class="tutor-accordion-item-header">
+										Labs Outline
+										<div class="tooltip-wrap">
+											<span class="tooltip-txt tooltip-right"><i class="fas fa-chevron-right"></i></span>
+										</div>
+									</h5>
+									<div class="tutor-accordion-item-body" style="display: none;">
+										<div class="tutor-accordion-item-body-content">
+											<?= $labs_outline; ?>
+										</div>
+									</div>
+								</div>
+								<?php } ?>
+							</div>
+							
+							<div class="tutor-accordion tutor-mt-24">
+								<?php 
+									$course_requirements = tutor_course_requirements();
+									if ( !empty( $course_requirements ) ) {
+								?>
+								<div class="tutor-accordion-item">
+									<h5 class="tutor-accordion-item-header">
+										Prerequisites
+										<div class="tooltip-wrap">
+											<span class="tooltip-txt tooltip-right"><i class="fas fa-chevron-right"></i></span>
+										</div>
+									</h5>
+									<div class="tutor-accordion-item-body" style="display: none;">
+										<div class="tutor-accordion-item-body-content">
+											<ul class="tutor-course-details-widget-list tutor-fs-6 tutor-color-black">
+											<?php
+												foreach ( $course_requirements as $requirement ) {
+													echo '<li class="tutor-d-flex tutor-mb-12"><span class="tutor-icon-bullet-point tutor-color-muted tutor-mt-2 tutor-mr-8 tutor-fs-8" area-hidden="true"></span><span>' . esc_html( $requirement ) . '</span></li>';
+												}
+											?>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<?php } ?>
+							</div>
+							
+							<div class="tutor-accordion tutor-mt-24">
+								<?php 
+									$related_certifications = get_field('related_certifications', $course_id);
+									if ( $related_certifications ) {
+								?>
+								<div class="tutor-accordion-item">
+									<h5 class="tutor-accordion-item-header">
+										Related Certifications
+										<div class="tooltip-wrap">
+											<span class="tooltip-txt tooltip-right"><i class="fas fa-chevron-right"></i></span>
+										</div>
+									</h5>
+									<div class="tutor-accordion-item-body" style="display: none;">
+										<div class="tutor-accordion-item-body-content">
+											<?= $related_certifications; ?>
+										</div>
+									</div>
+								</div>
+								<?php } ?>
+							</div>
+							
+						</div>
+						<div id="tutor-course-details-tab-training-details" class="tutor-tab-item">
+							<?php the_field('training_details', $course_id); ?>
+						</div>
+					</div>
+				</div>
+
+				<?php do_action( 'tutor_course/single/after/inner-wrap' ); ?>
+				
+				<?php $instructors = tutor_utils()->get_instructors_by_course(); ?>
+
+			</main>
+
+			<aside class="tutor-col-xl-4">
+				<?php $sidebar_attr = apply_filters( 'tutor_course_details_sidebar_attr', '' ); ?>
+				<div class="tutor-single-course-sidebar tutor-mt-40 tutor-mt-xl-0" <?php echo esc_attr( $sidebar_attr ); ?> >
+					<?php do_action( 'tutor_course/single/before/sidebar' ); ?>
+
+					<?php if ( ( $is_mobile && 'bottom' === $enrollment_box_position ) || ! $is_mobile ) : ?>
+						<?php tutor_load_template( 'single.course.course-entry-box' ); ?>
+					<?php endif ?>
+
+					<div class="tutor-single-course-sidebar-more tutor-mt-24">
+						<?php // tutor_course_instructors_html(); ?>
+						<?php // tutor_course_requirements_html(); ?>
+						<?php // tutor_course_tags_html(); ?>
+						<?php // tutor_course_target_audience_html(); ?>
+						<?php if( $counter > 0 ) { ?>
+						<?php if ( $is_purchasable && $counter < 0 ) { ?>
+							<?php if ( !( tutor_utils()->is_course_added_to_cart( $product_id, true ) ) ) { ?>
+							<div class="tutor-prefilled-cart"><img src="<?= site_url(); ?>/wp-content/uploads/2023/10/Vectorenvelope.svg" alt=""><a href="<?= site_url(); ?>/dcshare/" class="dc_prefilled_cart">Send as a prefilled cart</a></div>
+							<?php } ?>
+						<?php } ?>
+						<?php } ?>
+						<?php 
+							$course_details = get_field('course_details', $course_id);
+							if ( $course_details ) {
+						?>
+						<div class="tutor-download-course-details"><img src="<?= site_url(); ?>/wp-content/uploads/2023/10/5297768761579155704-1pdf.svg"><a href="<?= $course_details; ?>" target="_blank">Download course details</a></div>
+						<?php } ?>
+						<div class="tutor-request-custom-delivery"><img src="<?= site_url(); ?>/wp-content/uploads/2023/10/Vectorgear.svg"><a href="<?= site_url(); ?>/request-custom-delivery?course_id=<?= $course_id; ?>" target="_blank">Send Enquiry to Sales Team</a></div>
+						<!--
+						<div class="add-to-whislist">
+							<a href="#" class="tutor-btn tutor-btn-ghost tutor-course-wishlist-btn tutor-mr-16" data-course-id="<= $course_id; ?>">
+								<i class="<php echo $is_wish_listed ? 'tutor-icon-bookmark-bold' : 'tutor-icon-bookmark-line'; ?> tutor-mr-8"></i>
+								<span class="course-wishlist-btn-title"><php esc_html_e( 'Wishlist', 'tutor' ); ?></span>
+							</a>
+						</div>
+						-->
+					</div>
+					
+					<?php do_action( 'tutor_course/single/after/sidebar' ); ?>
+				</div>
+			</aside>
+		</div>
+	</div>
+</div>
+</section>
+<?php do_action( 'tutor_course/single/after/wrap' ); ?>
+
+<?php
+tutor_utils()->tutor_custom_footer();
