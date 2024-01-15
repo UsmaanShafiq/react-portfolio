@@ -12,6 +12,7 @@ function HeroTitle() {
         fontFamily={'DM Sans'}
         textAlign={'center'}
         color={'#292930'}
+        zIndex={10}
         >
             Hi 👋 I am Usman, website and user interface <span style={{color:'#5956E9'}}>Designer</span>.
         </Typography>

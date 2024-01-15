@@ -10,39 +10,46 @@ import bgCircle from '../../assets/images/bgCircle.jpg'
 import circleFloatImage from '../../assets/images/hero-light-2.png';
 import FloatImage2 from '../../assets/images/hero-light-1.png';
 import FloatSpiral from '../../assets/images/Spiral.png';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import linkedinIcon from '../../assets/images/linkedin.png'
+import githubIcon from '../../assets/images/code.png'
+import gmailIcon from '../../assets/images/gmail.png'
 
 function Home() {
+
   return (
+    <>
     <Container 
-      style={{
+        style={{
         maxWidth:'1000px', 
         backgroundImage:`url(${bgCircle})`,
         backgroundSize:'contain',
         backgroundRepeat:'no-repeat',
-        backgroundPosition:'center center'
+        backgroundPosition:'center center',
+        padding:'60px 0'
       }
         }>
-
-    <Stack justifyContent='center' alignItems='center' py={'60px'}>
+    <Stack justifyContent='center' alignItems='center' >
     <HeroTitle/>
     
     <Box component={'img'} src={heroimg} sx={{
-      marginTop:'50px', 
+      marginTop:'50px',
+      marginBottom:'60px',
       width: {lg:'auto', xs: '100%'}}} alt="hero_img" />
-    
     </Stack>
     
-    <Box>
-      <Social text={'Linkedin'} url={'linkedin.com'} icon={<LinkedInIcon/>} color={'#000'} bg={'#fff'}/>
-    </Box>
+    <Stack direction={{md:'row', xs: 'column'}} justifyContent={'center'} alignItems={'center'} spacing={2}>
+      <Social iconSize='30px' text={'Linkedin'} url={''} icon={linkedinIcon} color={'#000'} bg={'#fff'}/>
+      <Social iconSize='30px' text={'Github'} url={''} icon={githubIcon} color={'#000'} bg={'#fff'}/>
+      <Social iconSize='30px' text={'Gmail'} url={''} icon={gmailIcon} color={'#000'} bg={'#fff'}/>
+    </Stack>
 
-    <FloatImage url={circleFloatImage} top={'350px'} left={'50px'}/>
-    <FloatImage url={FloatImage2} top={'320px'} left={'90%'}/>
-    <FloatImage url={FloatSpiral} top={'700px'} left={'50px'}/>
-    <FloatImage url={circleFloatImage} top={'780px'} left={'90%'}/>
+      <FloatImage url={circleFloatImage} top={['50%', '0']} left={['5%', '0']} />
+      <FloatImage url={FloatImage2} top={['52%', '0']} left={['80%', '0']} />
+      <FloatImage url={FloatSpiral} top={['110%', '0']} left={['5%', '0']} />
+      <FloatImage url={circleFloatImage} top={['120%', '0']} left={['80%', '0']} />
 
     </Container>
+    </>
   )
 }
 

@@ -6,10 +6,17 @@ const FloatImage = ({ url, top, left }) => {
     <Box
       component="img"
       src = {url}
-      style={{
+      sx={{
         position: 'absolute',
-        top,
-        left,
+        top:top[0],
+        left:left[0],
+        animation: `${'moveUpDown'} 3s infinite linear`, // Reference the keyframes using interpolation
+        maxWidth: '100%',
+        '@keyframes moveUpDown': {  // Define the keyframes within the style
+          '0%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(10px)' },
+          '100%': { transform: 'translateY(0)' },
+        },
       }}
     />
   );
