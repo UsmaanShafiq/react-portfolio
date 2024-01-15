@@ -1,10 +1,12 @@
 import React from 'react'
 import Button from '@mui/material/Button';
 import { NavLink } from 'react-router-dom';
-import { Stack } from '@mui/material';
+import { Stack, IconButton, useMediaQuery } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import MenuIcon from '@mui/icons-material/Menu';
 import styles from './Navbar.module.css'
+
 
 function Navbar() {
 
@@ -17,8 +19,27 @@ function Navbar() {
     setAnchorEl(null);
   };
 
+
+  const isMobile = useMediaQuery('(max-width:900px)');
+
   return (
-    <Stack>
+    <>
+    
+  {
+    isMobile ? (
+      <Stack direction={'row'} justifyContent={'flex-end'} >
+      <IconButton
+        size="large"
+        edge="start"
+        color="inherit"
+        aria-label="menu"
+        sx={{ backgroundColor: 'blue', '&:hover' : {backgroundColor:'#E0C175', color:'#000'} }}
+      >
+        <MenuIcon />
+      </IconButton>
+    </Stack>
+    ) : (
+      <Stack>
     <ul style={{listStyleType:'none', display:'flex', justifyContent:'center'}}>
       <li className={styles.menu_item}>
         <Button className={styles.menu_link} component={NavLink} to="/">
@@ -66,6 +87,11 @@ function Navbar() {
       </li>
     </ul>
   </Stack>
+    )
+  }
+ 
+  
+  </>
   )
 }
 

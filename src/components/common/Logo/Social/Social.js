@@ -1,40 +1,26 @@
 import React from 'react'
-import { Stack } from '@mui/material'
 import Button from '@mui/material/Button'
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Link } from 'react-router-dom';
 
-function Social() {
-    const linkedInURL = 'https://www.linkedin.com/';
+function Social({text, url, icon, color, bg}) {
 
 return(
-    <Stack flexDirection={'row'} columnGap={2} justifyContent={'center'}>
-        <Button variant='contained' 
-        component={Link} 
-        to={linkedInURL} 
-        size='large'
-        target='_blank' 
-        
-        startIcon={<LinkedInIcon/>}>
-            Linkedin
-        </Button>
-        <Button variant='contained' 
-        component={Link} 
-        to={linkedInURL} 
-        size='large'
-        target='_blank' 
-        startIcon={<LinkedInIcon/>}>
-            Linkedin
-        </Button>
-        <Button variant='contained' 
-        component={Link} 
-        to={linkedInURL} 
-        size='large'
-        target='_blank' 
-        startIcon={<LinkedInIcon/>}>
-            Linkedin
-        </Button>
-    </Stack>
+    
+    <Button variant='contained' 
+    component={Link} 
+    to={url} 
+    size='large'
+    target='_blank' 
+    style={{
+        color:color,
+        background:bg,
+        padding:'12px 50px',
+        borderRadius:'8px'
+    }}
+    
+    startIcon={icon}>
+        {text}
+    </Button>
 )
 }
 
