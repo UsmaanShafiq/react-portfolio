@@ -5,6 +5,7 @@ import {Box} from '@mui/material'
 import HeroTitle from '../../components/HomeComp/HeroTitle'
 import Social from '../../components/common/Logo/Social/Social'
 import FloatImage from '../../components/common/Logo/FloatImages/FloatImage'
+import AboutSection from '../../components/AboutSection'
 import heroimg from '../../assets/images/hero.png'
 import bgCircle from '../../assets/images/bgCircle.jpg'
 import circleFloatImage from '../../assets/images/hero-light-2.png';
@@ -48,6 +49,11 @@ function Home() {
       <FloatImage url={FloatSpiral} top={['110%', '0']} left={['5%', '0']} />
       <FloatImage url={circleFloatImage} top={['120%', '0']} left={['80%', '0']} />
 
+    </Container>
+
+
+    <Container className='about_section' style={{ padding: '80px 0' }}>
+        <AboutSection/>
     </Container>
     </>
   )
