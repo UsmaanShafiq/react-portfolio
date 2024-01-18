@@ -1,11 +1,13 @@
 import React from 'react'
 import { Container } from '@mui/material'
 import {Stack} from '@mui/material'
-import {Box} from '@mui/material'
-import HeroTitle from '../../components/HomeComp/HeroTitle'
+import HeadingTwo from '../../components/common/Typos/HeadingTwo/HeadingTwo'
+import {Box, Grid} from '@mui/material'
+import HeroTitle from '../../components/HeroTitle/HeroTitle'
 import Social from '../../components/common/Logo/Social/Social'
 import FloatImage from '../../components/common/Logo/FloatImages/FloatImage'
 import AboutSection from '../../components/AboutSection'
+import ServiceCard from '../../components/ServiceCard/ServiceCard'
 import heroimg from '../../assets/images/hero.png'
 import bgCircle from '../../assets/images/bgCircle.jpg'
 import circleFloatImage from '../../assets/images/hero-light-2.png';
@@ -14,6 +16,8 @@ import FloatSpiral from '../../assets/images/Spiral.png';
 import linkedinIcon from '../../assets/images/linkedin.png'
 import githubIcon from '../../assets/images/code.png'
 import gmailIcon from '../../assets/images/gmail.png'
+import CodeIcon from '@mui/icons-material/Code';
+import Subheading from '../../components/common/Typos/Subheading/Subheading'
 
 function Home() {
 
@@ -52,8 +56,44 @@ function Home() {
     </Container>
 
 
-    <Container className='about_section' style={{ padding: '80px 0' }}>
+    <Container className='about_section' style={{ padding: '150px 0 100px 0' }}>
         <AboutSection/>
+    </Container>
+
+    <Container maxWidth='xl' className='services_section' sx={{padding:'100px 0', backgroundColor:'#292930'}}>
+      <Container padding={0}>
+        <Subheading style={{color:'#fff',}} circle='#FFDC60' text='What I Serve' />
+        <HeadingTwo text='Our Services' style={{color:'#fff'}}/>
+      <Grid container spacing={5}>
+      {/* First Row */}
+      <Grid item xs={12} md={3}>
+        <ServiceCard icon={<CodeIcon/>} title="Service 1" color='#8B40E5' bg='#EEE3FB'/>
+      </Grid>
+      <Grid item xs={12} md={3}>
+        <ServiceCard icon={<CodeIcon/>} title="Service 2" color='#8B40E5' bg='#EEE3FB'/>
+      </Grid>
+      <Grid item xs={12} md={3}>
+        <ServiceCard icon={<CodeIcon/>} title="Service 3" color='#8B40E5' bg='#EEE3FB'/>
+      </Grid>
+      <Grid item xs={12} md={3}>
+        <ServiceCard icon={<CodeIcon/>} title="Service 4" color='#8B40E5' bg='#EEE3FB'/>
+      </Grid>
+
+      {/* Second Row */}
+      <Grid item xs={12} md={3}>
+        <ServiceCard icon={<CodeIcon/>} title="Service 5" color='#8B40E5' bg='#EEE3FB'/>
+      </Grid>
+      <Grid item xs={12} md={3}>
+        <ServiceCard icon={<CodeIcon/>} title="Service 6" color='#8B40E5' bg='#EEE3FB'/>
+      </Grid>
+      <Grid item xs={12} md={3}>
+        <ServiceCard icon={<CodeIcon/>} title="Service 7" color='#8B40E5' bg='#EEE3FB'/>
+      </Grid>
+      <Grid item xs={12} md={3}>
+        <ServiceCard icon={<CodeIcon/>} title="Service 8" color='#8B40E5' bg='#EEE3FB'/>
+      </Grid>
+    </Grid>  
+      </Container>
     </Container>
     </>
   )
