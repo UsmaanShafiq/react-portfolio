@@ -2,23 +2,28 @@ import React from 'react'
 import FeatureCard from './FeatureCard';
 import { Grid, Button } from '@mui/material';
 import Subheading from '../common/Typos/Subheading/Subheading';
-import HeadingTwo from '../common/Typos/HeadingTwo/HeadingTwo';
-import Paragraph from '../common/Typos/Paragraph/Paragraph';
+import {Typography} from '@mui/material';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import GradeIcon from '@mui/icons-material/Grade';
 import featuresBg from '../../assets/images/features.png'
+import { ThemeProvider } from '@emotion/react';
+import theme from '../../theme';
 
 function AboutSection() {
   return (
-    <>
+    <ThemeProvider theme={theme}>
     <Grid container style={{maxWidth:'1140px'}} spacing={4}>
       
-      <Grid item md={6} 
+      <Grid item md={6} xs={12}
         display={'flex'}
-        flexDirection={'row'} 
         gap={5}
-        sx={{backgroundImage:`url(${featuresBg})`, backgroundRepeat:'no-repeat', backgroundSize:'contain'}}
+        sx={{
+          flexDirection: 'row',  justifyContent: 'center' , 
+          backgroundImage:`url(${featuresBg})`, 
+          backgroundRepeat:'no-repeat', 
+          backgroundSize:'contain'
+        }}
       >
         <Grid item xs={6} display={'flex'} alignItems={'center'}>
           <FeatureCard 
@@ -29,7 +34,7 @@ function AboutSection() {
             bg={'pink'} 
           />
         </Grid>
-        <Grid item xs={6} display={'flex'} flexDirection={'column'} gap={4} >
+        <Grid item xs={6}  display={'flex'} flexDirection={'column'} gap={4} >
           <FeatureCard 
             icon={<EmojiEmotionsIcon style={{fontSize:'30px'}}/>} 
             title={'Happy Customers'} 
@@ -45,16 +50,22 @@ function AboutSection() {
         </Grid>
       </Grid>
 
-      <Grid item md={6} display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'flex-start'}>
+      <Grid item md={6}  xs={12} display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'flex-start'}>
         <Subheading circle={'#FFDC60'} text={'About Me'}/>
-        <HeadingTwo text='We provide the best solution for your business development'/>
-        <Paragraph>
-          By understanding the client,s condition and leveraging our experience and knowledge. we support reform by recommending the most appropriate methods and sesources.
-        </Paragraph>
-        <br/>
-        <Paragraph>
-          At collax we specialize in designing, building, shipping and scaling beautiful, usable products with blazing.
-        </Paragraph>
+        <Typography variant='h2' marginBottom={'30px'}>
+          We provide the best solution for your business development
+        </Typography>
+        <Typography variant='body' 
+          style={{
+            color: theme.palette.custom.text,
+            lineHeight: '26px',
+            }}>
+            By understanding the client,s condition and leveraging our experience and knowledge. we support reform by recommending the most appropriate methods and sesources.
+            <br/><br/>
+            At collax we specialize in designing, building, shipping and scaling beautiful, usable products with blazing.
+        </Typography>
+          
+      
         <Button
                 variant='contained'
                 sx={{
@@ -74,7 +85,7 @@ function AboutSection() {
               </Button>
       </Grid>
     </Grid>
-    </>
+    </ThemeProvider>
   )
 }
 

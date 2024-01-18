@@ -1,16 +1,14 @@
 import React from 'react'
 import { Typography } from '@mui/material'
 
-function Subheading({circle, text}) {
+function Subheading({align, color, circle, text}) {
   return (
     <>
-    <Typography sx={{
-        fontSize:'18px',
-        color:'#8a90a2',
+    <Typography variant='subtitle1' sx={{
+        color:color,
         fontWeight:'500',
         textTransform:'capitalize',
-        fontFamily:'DM Sans',
-        marginBottom:'20px',
+        textAlign: align,
     '&:before': { 
     height: '12px',
     width: '12px',
@@ -19,7 +17,7 @@ function Subheading({circle, text}) {
     display: 'inline-block',
     borderRadius: '50%',
     marginRight: '10px'
-    }}} variant='h5'>{text}</Typography>
+    }}} >{text}</Typography>
     </>
   )
 }

@@ -6,11 +6,14 @@ import { Box, Button, useMediaQuery } from '@mui/material';
 // import Container from '@mui/material/Container';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
+import {ThemeProvider} from '@mui/material';
+import theme from '../../theme';
 
 function Header() {
   const isDesktop = useMediaQuery('(min-width:900px)');
   
   return (
+    <ThemeProvider theme={theme}>
       <AppBar position='static' sx={{backgroundColor:'#fff', boxShadow:'none', 
       padding: {lg: '30px', sm: '20px', xs: '10px'}} }>
         <Toolbar>
@@ -30,9 +33,9 @@ function Header() {
                 variant='contained'
                 sx={{
                   p:'15px 30px',
-                  backgroundColor: '#5956E9',
+                  backgroundColor: theme.palette.primary.main ,
                   '&:hover': {
-                    backgroundColor: '#FFDC60', color:'#000'
+                    backgroundColor: theme.palette.secondary.main, color:'#000'
                   },
                   fontWeight:'600', fontFamily:'DM Sans', 
                   textTransform:'capitalize',
@@ -52,6 +55,7 @@ function Header() {
           
         </Toolbar>  
       </AppBar>
+      </ThemeProvider>
 )
 }
 

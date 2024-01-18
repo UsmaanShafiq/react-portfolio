@@ -7,7 +7,6 @@ import Portfolio from "./Pages/Portfolio/Portfolio";
 import Services from "./Pages/Services/Services";
 import Contact from "./Pages/Contact/Contact";
 
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {

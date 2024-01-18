@@ -1,11 +1,10 @@
 import React from 'react'
-import { Container } from '@mui/material'
+import { Container, Typography } from '@mui/material'
 import {Stack} from '@mui/material'
-import HeadingTwo from '../../components/common/Typos/HeadingTwo/HeadingTwo'
 import {Box, Grid} from '@mui/material'
 import HeroTitle from '../../components/HeroTitle/HeroTitle'
-import Social from '../../components/common/Logo/Social/Social'
-import FloatImage from '../../components/common/Logo/FloatImages/FloatImage'
+import Social from '../../components/common/Social/Social'
+import FloatImage from '../../components/common/FloatImages/FloatImage'
 import AboutSection from '../../components/AboutSection'
 import ServiceCard from '../../components/ServiceCard/ServiceCard'
 import heroimg from '../../assets/images/hero.png'
@@ -18,11 +17,15 @@ import githubIcon from '../../assets/images/code.png'
 import gmailIcon from '../../assets/images/gmail.png'
 import CodeIcon from '@mui/icons-material/Code';
 import Subheading from '../../components/common/Typos/Subheading/Subheading'
+import Industry from '../../components/common/Industry/Industry'
+import { ThemeProvider } from '@mui/material/styles';
+import theme from '../../theme'
 
 function Home() {
 
   return (
     <>
+    <ThemeProvider theme={theme}>
     <Container 
         style={{
         maxWidth:'1000px', 
@@ -62,39 +65,115 @@ function Home() {
 
     <Container maxWidth='xl' className='services_section' sx={{padding:'100px 0', backgroundColor:'#292930'}}>
       <Container padding={0}>
-        <Subheading style={{color:'#fff',}} circle='#FFDC60' text='What I Serve' />
-        <HeadingTwo text='Our Services' style={{color:'#fff'}}/>
-      <Grid container spacing={5}>
-      {/* First Row */}
-      <Grid item xs={12} md={3}>
-        <ServiceCard icon={<CodeIcon/>} title="Service 1" color='#8B40E5' bg='#EEE3FB'/>
-      </Grid>
-      <Grid item xs={12} md={3}>
-        <ServiceCard icon={<CodeIcon/>} title="Service 2" color='#8B40E5' bg='#EEE3FB'/>
-      </Grid>
-      <Grid item xs={12} md={3}>
-        <ServiceCard icon={<CodeIcon/>} title="Service 3" color='#8B40E5' bg='#EEE3FB'/>
-      </Grid>
-      <Grid item xs={12} md={3}>
-        <ServiceCard icon={<CodeIcon/>} title="Service 4" color='#8B40E5' bg='#EEE3FB'/>
-      </Grid>
+        <Subheading align='center' color='#fff' circle='#FFDC60' text='What I Offer' />
+        <Typography variant='h2' sx={{color:'#fff', textAlign:'center', marginBottom:'40px'}}>
+          Our Services
+        </Typography>
+        <Grid container spacing={5}>
+          {/* First Row */}
+          <Grid item xs={12} md={3}>
+            <ServiceCard icon={<CodeIcon/>} title="Product Management" color='#8B40E5' bg='#EEE3FB'/>
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <ServiceCard icon={<CodeIcon/>} title="Web & Mobile Development" color='#8B40E5' bg='#EEE3FB'/>
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <ServiceCard icon={<CodeIcon/>} title="Fast Customer Support" color='#8B40E5' bg='#EEE3FB'/>
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <ServiceCard icon={<CodeIcon/>} title="Human Resources" color='#8B40E5' bg='#EEE3FB'/>
+          </Grid>
 
-      {/* Second Row */}
-      <Grid item xs={12} md={3}>
-        <ServiceCard icon={<CodeIcon/>} title="Service 5" color='#8B40E5' bg='#EEE3FB'/>
-      </Grid>
-      <Grid item xs={12} md={3}>
-        <ServiceCard icon={<CodeIcon/>} title="Service 6" color='#8B40E5' bg='#EEE3FB'/>
-      </Grid>
-      <Grid item xs={12} md={3}>
-        <ServiceCard icon={<CodeIcon/>} title="Service 7" color='#8B40E5' bg='#EEE3FB'/>
-      </Grid>
-      <Grid item xs={12} md={3}>
-        <ServiceCard icon={<CodeIcon/>} title="Service 8" color='#8B40E5' bg='#EEE3FB'/>
-      </Grid>
-    </Grid>  
+          {/* Second Row */}
+          <Grid item xs={12} md={3}>
+            <ServiceCard icon={<CodeIcon/>} title="Design and Vreatives" color='#8B40E5' bg='#EEE3FB'/>
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <ServiceCard icon={<CodeIcon/>} title="Meketing and Communcation" color='#8B40E5' bg='#EEE3FB'/>
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <ServiceCard icon={<CodeIcon/>} title="Business Development" color='#8B40E5' bg='#EEE3FB'/>
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <ServiceCard icon={<CodeIcon/>} title="Another Service Here" color='#8B40E5' bg='#EEE3FB'/>
+          </Grid>
+        </Grid>  
       </Container>
     </Container>
+
+    <Container className='industries_section' style={{ padding: '100px 0 100px 0' }}>
+      <Container sx={{
+        backgroundColor:'#F7F8FD', 
+        padding:'80px',
+        borderRadius:'20px',
+        }}>
+        <Typography 
+          variant='h2' 
+          color={theme.palette.custom.accent}
+          textAlign={'center'}
+        >
+            Industries
+        </Typography>
+        
+        
+        <Box className='industries_pills' 
+          display={'flex'} 
+          flexWrap={'wrap'} 
+          justifyContent={'center'} 
+          gap={3}
+          marginTop={'50px'}
+        >
+        <Industry 
+        align='' color={theme.palette.custom.accent} 
+        circleSize='20px' circleColor='#FFDC60'
+        pillBg='#fff' textSize='18px' text='Manufacturing'
+        />
+        <Industry 
+        align='' color={theme.palette.custom.accent} 
+        circleSize='20px' circleColor='#82CEFD'
+        pillBg='#fff' textSize='18px' text='Chemical Industry'
+        />
+        <Industry 
+        align='' color={theme.palette.custom.accent} 
+        circleSize='20px' circleColor='#FD346E'
+        pillBg='#fff' textSize='18px' text='Supply Chain Solutlions'
+        />
+        <Industry 
+        align='' color={theme.palette.custom.accent} 
+        circleSize='20px' circleColor='#5956E9'
+        pillBg='#fff' textSize='18px' text='Manufacturing'
+        />
+        <Industry 
+        align='' color={theme.palette.custom.accent} 
+        circleSize='20px' circleColor='#82CEFD'
+        pillBg='#fff' textSize='18px' text='Telcom Cable'
+        />
+        <Industry 
+        align='' color={theme.palette.custom.accent} 
+        circleSize='20px' circleColor='#FD346E'
+        pillBg='#fff' textSize='18px' text='Healthcare'
+        />
+        <Industry 
+        align='' color={theme.palette.custom.accent} 
+        circleSize='20px' circleColor='#5956E9'
+        pillBg='#fff' textSize='18px' text='Banking'
+        />
+        <Industry 
+        align='' color={theme.palette.custom.accent} 
+        circleSize='20px' circleColor='#82CEFD'
+        pillBg='#fff' textSize='18px' text='Human Capital Management'
+        />
+        <Industry 
+        align='' color={theme.palette.custom.accent} 
+        circleSize='20px' circleColor='#FFDC60'
+        pillBg='#fff' textSize='18px' text='Fed and State GOVT'
+        />
+
+        </Box>
+      </Container>
+      
+    </Container>
+    </ThemeProvider>
     </>
   )
 }

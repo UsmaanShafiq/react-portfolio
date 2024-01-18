@@ -1,16 +1,19 @@
 import React from 'react'
 import { Box } from '@mui/material'
+import { ThemeProvider } from '@emotion/react'
+import theme from '../../theme'
 
 function FeatureCard({icon, title, caption, color, bg}) {
   return (
-    <>
+    <ThemeProvider theme={theme}>
     <Box sx={
         {
             background:'#fff',
-            padding:'50px 40px',
+            padding:{md: '50px 40px', xs: '30px 20px'},
             borderRadius:'10px',
             boxShadow:'0px 26px 50px rgba(203, 206, 225, 0.24)',
-            width:'fit-content'
+            width:'100%',
+            boxSizing:'border-box'
         }
     }>
         <Box sx={{
@@ -29,7 +32,7 @@ function FeatureCard({icon, title, caption, color, bg}) {
         
         <Box component={'h2'} sx={{
             fontSize:'24px',
-            color:'rgb(41,41,41)',
+            color:theme.palette.custom.accent,
             lineHeight:'29px',
             fontWeight:'500',
             marginBottom:'20px'
@@ -38,12 +41,12 @@ function FeatureCard({icon, title, caption, color, bg}) {
         <Box component={'p'} sx={{
             fontSize:'18px',
             lineHeight:'30px',
-            color:'#8a90a2',
+            color:theme.palette.custom.text,
             fontWeight:'400'
 
         }}>{caption}</Box>
     </Box>
-    </>
+    </ThemeProvider>
   )
 }
 
