@@ -3,7 +3,7 @@ import Logo from '../common/Logo/Logo';
 import Navbar from './Navbar/Navbar'
 import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import { Box, Button, useMediaQuery } from '@mui/material';
-// import Container from '@mui/material/Container';
+import logo from '../../assets/images/logo-blue.png'
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import {ThemeProvider} from '@mui/material';
@@ -20,7 +20,7 @@ function Header() {
 
           <Grid container alignItems={'center'} width={'100%'}>
             <Grid md={3} xs={8}>
-              <Logo/>
+              <Logo SiteLogo={logo}/>
             </Grid>
 
             <Grid md={6}  xs={4}><Navbar/></Grid>

@@ -1,9 +1,9 @@
 import React from 'react'
-import SiteLogo from '../../../assets/images/logo-blue.png';
+
 import styles from "./Logo.module.css"
 import { Link } from 'react-router-dom';
 
-function Logo() {
+function Logo({SiteLogo}) {
 
   return (
     <div className={styles.site_logo} >
