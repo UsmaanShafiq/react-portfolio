@@ -1,0 +1,15 @@
+/* Your external CSS file */
+.tab_container .tab_item {
+    font-size: 15px;
+    color: #8a90a2;
+    text-transform: capitalize;
+    border: 0;
+    font-family: 'DM Sans';
+}
+.tab_container .tab_item:not(:first-child){
+    border-left: 1px solid #E4E6EA;
+}
+
+.tab_container .tab_item.Mui-selected{
+    box-shadow: 0px 15px 30px rgba(57, 81, 105, 0.05);
+}

@@ -30,7 +30,7 @@ const theme = createTheme({
       fontFamily: 'DM Sans'
     },
     h2: {
-      fontSize: '2.8125rem', // 45px / 16px = 2.8125rem
+      fontSize: '3.125rem', // 45px / 16px = 3.125rem
       fontWeight: 700,
       fontFamily: 'DM Sans'
     },

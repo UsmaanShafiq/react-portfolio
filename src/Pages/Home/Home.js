@@ -1,12 +1,12 @@
 import React from 'react'
-import { Container, Typography } from '@mui/material'
-import {Stack} from '@mui/material'
-import {Box, Grid} from '@mui/material'
+import {Stack, Box, Grid, Container, Typography } from '@mui/material'
 import HeroTitle from '../../components/HeroTitle/HeroTitle'
 import Social from '../../components/common/Social/Social'
 import FloatImage from '../../components/common/FloatImages/FloatImage'
 import AboutSection from '../../components/AboutSection'
 import ServiceCard from '../../components/ServiceCard/ServiceCard'
+import PortfolioTabs from '../../components/PortfolioTabs/PortfolioTabs'
+import CTA from '../../components/CTA/CTA'
 import heroimg from '../../assets/images/hero.png'
 import bgCircle from '../../assets/images/bgCircle.jpg'
 import circleFloatImage from '../../assets/images/hero-light-2.png';
@@ -15,9 +15,11 @@ import FloatSpiral from '../../assets/images/Spiral.png';
 import linkedinIcon from '../../assets/images/linkedin.png'
 import githubIcon from '../../assets/images/code.png'
 import gmailIcon from '../../assets/images/gmail.png'
+import cta1 from '../../assets/images/cta-1.png'
 import CodeIcon from '@mui/icons-material/Code';
 import Subheading from '../../components/common/Typos/Subheading/Subheading'
 import Industry from '../../components/common/Industry/Industry'
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../../theme'
 
@@ -63,7 +65,7 @@ function Home() {
         <AboutSection/>
     </Container>
 
-    <Container maxWidth='xl' className='services_section' sx={{padding:'100px 0', backgroundColor:'#292930'}}>
+    <Container maxWidth='xl' className='services_section' sx={{padding:'100px 10px', backgroundColor:'#292930'}}>
       <Container padding={0}>
         <Subheading align='center' color='#fff' circle='#FFDC60' text='What I Offer' />
         <Typography variant='h2' sx={{color:'#fff', textAlign:'center', marginBottom:'40px'}}>
@@ -101,10 +103,10 @@ function Home() {
       </Container>
     </Container>
 
-    <Container className='industries_section' style={{ padding: '100px 0 100px 0' }}>
+    <Container className='industries_section' style={{ padding: '100px 10px' }}>
       <Container sx={{
         backgroundColor:'#F7F8FD', 
-        padding:'80px',
+        padding:{md:'60px', sm: '30px'},
         borderRadius:'20px',
         }}>
         <Typography 
@@ -168,11 +170,21 @@ function Home() {
         circleSize='20px' circleColor='#FFDC60'
         pillBg='#fff' textSize='18px' text='Fed and State GOVT'
         />
-
-        </Box>
+      </Box>
       </Container>
       
     </Container>
+
+
+    <CTA text="Hi,👋 I am experts in every aspect lifecycle" img={cta1} imgSize='60%' btnIcon={<FileDownloadOutlinedIcon/>} btnText='Download CV'/>
+
+    <Container className='portfolio_section' sx={{padding:'100px 10px'}}>
+      <Subheading circle='#FFDC60' color='#000' text='Completed Projects' align='center'/>
+      <Typography variant='h2'textAlign={'center'}>Creative work.</Typography>
+      <PortfolioTabs/>
+    </Container>
+
+
     </ThemeProvider>
     </>
   )
