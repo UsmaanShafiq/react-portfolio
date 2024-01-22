@@ -1,46 +1,41 @@
 import React from 'react'
-import { Box, Container, Grid, Typography } from '@mui/material'
+import { Box, Container, ThemeProvider, Typography, Button } from '@mui/material'
 import Logo from '../common/Logo/Logo'
 import logo from '../../assets/images/logo-white.png'
 import { Link } from 'react-router-dom'
-import styles from './Footer.css'
-function Footer() {
-    console.log(styles.footer_link);
-  return (
-    <Container className='footer_wrapper' maxWidth='xl' sx={{backgroundColor:'#292930', padding:'100px 10px'}}>
-        <Container className='top_footer'>
-            <Grid container>
-                <Grid item md={3} sm={1} xs={1}>
-                    <Logo SiteLogo={logo}/>
-                    <Typography variant='p' style={{fontSize:'14px', color:'#8a90a2', lineHeight:'26px'}}>
-                        A new way to make the payments easy, reliable and 100% secure. claritatem itamconse quat. Exerci tationulla
-                    </Typography>
-                </Grid>
-                <Grid item md={3} sm={1} xs={1}>
-                    <Box>
-                        <Typography variant='h3' color='#fff' 
-                            style={{fontSize:'20px', fontFamily:'DM Sans', fontWeight:'600'}}>
-                            Useful Links
-                        </Typography>
-                        <Box display='flex' flexDirection={'column'} className='footer_links' style={styles.footer_links}>
-                            <Link className={styles.footer_link} to='/'>Home</Link>
-                            <Link className={styles.footer_link} to='/about'>About</Link>
-                            <Link className={styles.footer_link} to='/services'>Services</Link>
-                            <Link className={styles.footer_link} to='/portfolio'>Portfolio</Link>
-                            <Link className={styles.footer_link} to='/contact'>Contact</Link>
-                        </Box>
+import theme from '../../theme'
 
-                    </Box>
-                </Grid>
-                <Grid item md={3} sm={1} xs={1}>
-                    <Box>Footer col 3</Box>
-                </Grid>
-                <Grid item md={3} sm={1} xs={1}>
-                    <Box>Footer col 4</Box>
-                </Grid>
-            </Grid>
-        </Container>
+function Footer() {
+   
+  return (
+    <ThemeProvider theme={theme}>
+    <Container className='footer_wrapper' maxWidth='xl' sx={{backgroundColor:'#fff', padding:'100px 10px'}}>
+        <Box className="footer_top" display='flex' justifyContent='center' flexDirection='column' alignItems='center'>
+            <Typography variant='h2' sx={{textAlign:'center', marginBottom:'20px'}}>Let’s build something together</Typography>
+            <Typography variant='subtitle1' sx={{textAlign:'center', color:theme.palette.custom.text}}>
+                At Collax we specialize in designing, building, shipping and scaling<br/> beautiful, 
+                usable products with blazing-fast efficiency
+            </Typography>
+            <Button
+                variant='contained'
+                sx={{
+                  p:'15px 30px',
+                  marginTop: '30px',
+                  backgroundColor: '#5956E9',
+                  '&:hover': {
+                    backgroundColor: '#FFDC60', color:'#000'
+                  },
+                  fontWeight:'600', fontFamily:'DM Sans', 
+                  textTransform:'capitalize',
+                  fontSize:'16px',
+                  borderRadius:'10px',
+                }}
+              >
+                Let's Connect
+              </Button>
+        </Box>
     </Container>
+    </ThemeProvider>
   )
 }
 

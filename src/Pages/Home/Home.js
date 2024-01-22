@@ -22,6 +22,8 @@ import Industry from '../../components/common/Industry/Industry'
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../../theme'
+import Testimonial from '../../components/Testimonial/Testimonial'
+import Marquee from 'react-fast-marquee'
 
 function Home() {
 
@@ -184,7 +186,27 @@ function Home() {
       <PortfolioTabs/>
     </Container>
 
-
+      <Container maxWidth='100%' style={{backgroundColor:'#292930', padding:'100px 0'}} >
+        <Subheading 
+          circle={theme.palette.secondary.main}
+          color={theme.palette.custom.text}
+          align={'center'}
+          text='Testimonials'
+        />
+        <Typography variant='h2' color='#fff' marginTop='10px'align="center" marginBottom='40px'>What Client Says</Typography>
+              
+          <Marquee direction='right' style={{padding:'0'}}>
+            <Testimonial/>
+            <Testimonial/>
+            <Testimonial/>
+          </Marquee>
+          <Marquee direction='left' style={{padding:'0'}}>
+            <Testimonial/>
+            <Testimonial/>
+            <Testimonial/>
+          </Marquee>
+      </Container>
+        
     </ThemeProvider>
     </>
   )
