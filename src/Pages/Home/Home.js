@@ -24,6 +24,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import theme from '../../theme'
 import Testimonial from '../../components/Testimonial/Testimonial'
 import Marquee from 'react-fast-marquee'
+import testimg from '../../assets/images/testi-3.png'
 
 function Home() {
 
@@ -195,15 +196,24 @@ function Home() {
         />
         <Typography variant='h2' color='#fff' marginTop='10px'align="center" marginBottom='40px'>What Client Says</Typography>
               
-          <Marquee direction='right' style={{padding:'0'}}>
-            <Testimonial/>
-            <Testimonial/>
-            <Testimonial/>
-          </Marquee>
-          <Marquee direction='left' style={{padding:'0'}}>
-            <Testimonial/>
-            <Testimonial/>
-            <Testimonial/>
+          <Marquee pauseOnHover={true} style={{padding:'0'}}>
+            <Testimonial img={testimg} name='Sarah Thompson' title='UX Designer' content={
+              `Working with CodexInno was an absolute pleasure! 
+              Their ReactJS skills brought my design concepts to life seamlessly. 
+              The attention to detail and commitment to creating a smooth user experience were remarkable. 
+              I highly recommend CodexInno for anyone seeking a talented and collaborative developer.`
+            }/>
+            <Testimonial img={testimg} name='Alex Rodriguez' title='Startup Founder' content={
+              `I am beyond impressed with the ReactJS expertise that CodexInno brought to our startup project. 
+              Their ability to tackle complex challenges and deliver high-quality code on time was exceptional. 
+              CodexInno is a reliable and dedicated developer, and I look forward to future collaborations.`
+            }/>
+            <Testimonial img={testimg} name='Emily Davis' title='Content Creator' content={
+              `As a content creator, having a visually appealing and user-friendly website is crucial. 
+              CodexInno not only met but exceeded my expectations in developing my ReactJS-based portfolio site. 
+              They understood my vision and implemented it flawlessly.
+              I'm grateful for their creativity and technical proficiency.`
+            }/>
           </Marquee>
       </Container>
         

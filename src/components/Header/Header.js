@@ -3,7 +3,7 @@ import Logo from '../common/Logo/Logo';
 import Navbar from './Navbar/Navbar'
 import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import { Box, Button, useMediaQuery } from '@mui/material';
-import logo from '../../assets/images/logo-blue.png'
+import logo from '../../assets/images/logo.png'
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import {ThemeProvider} from '@mui/material';

@@ -1,20 +1,19 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
-import testimg from '../../assets/images/testi-3.png'
 import GradeIcon from '@mui/icons-material/Grade';
-function Testimonial() {
+function Testimonial({img, name, title, content}) {
   return (
     <Box className="testimonial_slide_wrapper" sx={{
         backgroundColor:'rgb(58, 58, 66)',
-        padding:'60px 35px',
+        padding:'50px 35px',
         fontFamily:'DM Sans',
         borderRadius:'20px',
         width:'430px',
-        margin:'20px 20px',
+        margin:'10px 20px',
     }}>
         <Box className="author_info" marginBottom='30px' display='flex' justifyContent='space-between' alignItems='center'>
             <Box className="name_title" display='flex' alignItems='center'>
-                <Box component='img' src={testimg} alt="client_img" sx={{marginRight:'15px'}} />
+                <Box component='img' src={img} alt="client_img" sx={{marginRight:'15px'}} />
                 <Box>
                 <Typography 
                     style={{
@@ -23,7 +22,7 @@ function Testimonial() {
                         fontFamily:'DM Sans',
                         fontWeight:'700',    
                     }}>
-                    Albert Flores
+                    {name}
                 </Typography>
                 <Typography 
                     style={{
@@ -32,7 +31,7 @@ function Testimonial() {
                         fontFamily:'DM Sans',
                         fontWeight:'500',    
                     }}>
-                    Founder of (Rirax)
+                    {title}
                 </Typography>
                 </Box>
             </Box>
@@ -52,8 +51,7 @@ function Testimonial() {
                         fontWeight:'500',
                         lineHeight:'30px'    
                     }}>
-            Collax was very diligent, polite and extremely customer oriented. 
-            I think Monika will go far with that attitude and ...he is such a honest, decent and reliable.
+            {content}
             </Typography>
         </Box>
     </Box>
