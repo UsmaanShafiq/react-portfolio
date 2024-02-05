@@ -14,10 +14,12 @@ function Footer() {
     <ThemeProvider theme={theme}>
     <Container className='footer_wrapper' maxWidth='100%' sx={{backgroundColor:'#fff', padding:'100px 10px', position:'relative'}}>
         <Box className="footer_top" display='flex' justifyContent='center' flexDirection='column' alignItems='center'>
-            <Typography variant='h2' sx={{textAlign:'center', marginBottom:'20px'}}>Let’s build something together</Typography>
+            <Typography variant='h2' sx={{textAlign:'center', marginBottom:'20px'}}>
+              Let's build something amazing! 
+            </Typography>
             <Typography variant='subtitle1' sx={{textAlign:'center', color:theme.palette.custom.text}}>
-                At Collax we specialize in designing, building, shipping and scaling<br/> beautiful, 
-                usable products with blazing-fast efficiency
+              Enhance your online presence with my expert web development skills. <br/>
+              Let's bring your vision to life together!
             </Typography>
             
             <Button

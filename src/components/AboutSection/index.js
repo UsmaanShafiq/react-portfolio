@@ -53,16 +53,15 @@ function AboutSection() {
       <Grid item md={6}  xs={12} display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'flex-start'}>
         <Subheading circle={'#FFDC60'} text={'About Me'}/>
         <Typography variant='h2' marginBottom={'30px'}>
-          We provide the best solution for your business development
+        The Creative Mind Behind the Code
         </Typography>
         <Typography variant='body' 
           style={{
             color: theme.palette.custom.text,
             lineHeight: '26px',
             }}>
-            By understanding the client,s condition and leveraging our experience and knowledge. we support reform by recommending the most appropriate methods and sesources.
-            <br/><br/>
-            At collax we specialize in designing, building, shipping and scaling beautiful, usable products with blazing.
+          Welcome to my digital world! I'm Usman, a web developer fueled by creativity and driven by innovation. With a passion for crafting engaging online experiences, I specialize in designing and developing dynamic websites. My journey into web development has been a story of growth and learning, where I've honed my skills in various technologies. As a dedicated techie, 
+          I find inspiration in coding, technology, and all things digital. Let's bring your digital vision to life!
         </Typography>
           
       

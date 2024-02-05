@@ -35,27 +35,12 @@ function About() {
         <Industry 
         align='' color={theme.palette.custom.accent} 
         circleSize='20px' circleColor='#FFDC60'
-        pillBg='#fff' textSize='18px' text='Manufacturing'
+        pillBg='#fff' textSize='18px' text='Technology'
         />
         <Industry 
         align='' color={theme.palette.custom.accent} 
         circleSize='20px' circleColor='#82CEFD'
-        pillBg='#fff' textSize='18px' text='Chemical Industry'
-        />
-        <Industry 
-        align='' color={theme.palette.custom.accent} 
-        circleSize='20px' circleColor='#FD346E'
-        pillBg='#fff' textSize='18px' text='Supply Chain Solutlions'
-        />
-        <Industry 
-        align='' color={theme.palette.custom.accent} 
-        circleSize='20px' circleColor='#5956E9'
-        pillBg='#fff' textSize='18px' text='Manufacturing'
-        />
-        <Industry 
-        align='' color={theme.palette.custom.accent} 
-        circleSize='20px' circleColor='#82CEFD'
-        pillBg='#fff' textSize='18px' text='Telcom Cable'
+        pillBg='#fff' textSize='18px' text='E-commerce'
         />
         <Industry 
         align='' color={theme.palette.custom.accent} 
@@ -65,19 +50,44 @@ function About() {
         <Industry 
         align='' color={theme.palette.custom.accent} 
         circleSize='20px' circleColor='#5956E9'
-        pillBg='#fff' textSize='18px' text='Banking'
+        pillBg='#fff' textSize='18px' text='Education'
         />
         <Industry 
         align='' color={theme.palette.custom.accent} 
         circleSize='20px' circleColor='#82CEFD'
-        pillBg='#fff' textSize='18px' text='Human Capital Management'
+        pillBg='#fff' textSize='18px' text='Real Estate'
+        />
+        <Industry 
+        align='' color={theme.palette.custom.accent} 
+        circleSize='20px' circleColor='#FD346E'
+        pillBg='#fff' textSize='18px' text='Finance'
+        />
+        <Industry 
+        align='' color={theme.palette.custom.accent} 
+        circleSize='20px' circleColor='#5956E9'
+        pillBg='#fff' textSize='18px' text='Hospitality'
+        />
+        <Industry 
+        align='' color={theme.palette.custom.accent} 
+        circleSize='20px' circleColor='#82CEFD'
+        pillBg='#fff' textSize='18px' text='Entertainment'
         />
         <Industry 
         align='' color={theme.palette.custom.accent} 
         circleSize='20px' circleColor='#FFDC60'
-        pillBg='#fff' textSize='18px' text='Fed and State GOVT'
+        pillBg='#fff' textSize='18px' text='Non-profit'
         />
-      </Box>
+        <Industry 
+        align='' color={theme.palette.custom.accent} 
+        circleSize='20px' circleColor='#26E78E'
+        pillBg='#fff' textSize='18px' text='Retail'
+        />
+        <Industry 
+        align='' color={theme.palette.custom.accent} 
+        circleSize='20px' circleColor='#FF6F69'
+        pillBg='#fff' textSize='18px' text='Events Management'
+        />
+        </Box>
       </Container>
       
     </Container>

@@ -77,30 +77,30 @@ function Home() {
         <Grid container spacing={5}>
           {/* First Row */}
           <Grid item xs={12} md={3}>
-            <ServiceCard icon={<CodeIcon/>} title="Product Management" color='#8B40E5' bg='#EEE3FB'/>
+            <ServiceCard icon={<CodeIcon/>} title="Custom Web Creation" color='#8B40E5' bg='#EEE3FB'/>
           </Grid>
           <Grid item xs={12} md={3}>
-            <ServiceCard icon={<CodeIcon/>} title="Web & Mobile Development" color='#8B40E5' bg='#EEE3FB'/>
+            <ServiceCard icon={<CodeIcon/>} title="E-commerce Solutions" color='#8B40E5' bg='#EEE3FB'/>
           </Grid>
           <Grid item xs={12} md={3}>
             <ServiceCard icon={<CodeIcon/>} title="Fast Customer Support" color='#8B40E5' bg='#EEE3FB'/>
           </Grid>
           <Grid item xs={12} md={3}>
-            <ServiceCard icon={<CodeIcon/>} title="Human Resources" color='#8B40E5' bg='#EEE3FB'/>
+            <ServiceCard icon={<CodeIcon/>} title="CMS Integration" color='#8B40E5' bg='#EEE3FB'/>
           </Grid>
 
           {/* Second Row */}
           <Grid item xs={12} md={3}>
-            <ServiceCard icon={<CodeIcon/>} title="Design and Vreatives" color='#8B40E5' bg='#EEE3FB'/>
+            <ServiceCard icon={<CodeIcon/>} title="Speed Optimization" color='#8B40E5' bg='#EEE3FB'/>
           </Grid>
           <Grid item xs={12} md={3}>
-            <ServiceCard icon={<CodeIcon/>} title="Meketing and Communcation" color='#8B40E5' bg='#EEE3FB'/>
+            <ServiceCard icon={<CodeIcon/>} title="Search Engine Optimization" color='#8B40E5' bg='#EEE3FB'/>
           </Grid>
           <Grid item xs={12} md={3}>
-            <ServiceCard icon={<CodeIcon/>} title="Business Development" color='#8B40E5' bg='#EEE3FB'/>
+            <ServiceCard icon={<CodeIcon/>} title="Social Media Integration" color='#8B40E5' bg='#EEE3FB'/>
           </Grid>
           <Grid item xs={12} md={3}>
-            <ServiceCard icon={<CodeIcon/>} title="Another Service Here" color='#8B40E5' bg='#EEE3FB'/>
+            <ServiceCard icon={<CodeIcon/>} title="Website Security & SSL" color='#8B40E5' bg='#EEE3FB'/>
           </Grid>
         </Grid>  
       </Container>
@@ -131,27 +131,12 @@ function Home() {
         <Industry 
         align='' color={theme.palette.custom.accent} 
         circleSize='20px' circleColor='#FFDC60'
-        pillBg='#fff' textSize='18px' text='Manufacturing'
+        pillBg='#fff' textSize='18px' text='Technology'
         />
         <Industry 
         align='' color={theme.palette.custom.accent} 
         circleSize='20px' circleColor='#82CEFD'
-        pillBg='#fff' textSize='18px' text='Chemical Industry'
-        />
-        <Industry 
-        align='' color={theme.palette.custom.accent} 
-        circleSize='20px' circleColor='#FD346E'
-        pillBg='#fff' textSize='18px' text='Supply Chain Solutlions'
-        />
-        <Industry 
-        align='' color={theme.palette.custom.accent} 
-        circleSize='20px' circleColor='#5956E9'
-        pillBg='#fff' textSize='18px' text='Manufacturing'
-        />
-        <Industry 
-        align='' color={theme.palette.custom.accent} 
-        circleSize='20px' circleColor='#82CEFD'
-        pillBg='#fff' textSize='18px' text='Telcom Cable'
+        pillBg='#fff' textSize='18px' text='E-commerce'
         />
         <Industry 
         align='' color={theme.palette.custom.accent} 
@@ -161,25 +146,50 @@ function Home() {
         <Industry 
         align='' color={theme.palette.custom.accent} 
         circleSize='20px' circleColor='#5956E9'
-        pillBg='#fff' textSize='18px' text='Banking'
+        pillBg='#fff' textSize='18px' text='Education'
         />
         <Industry 
         align='' color={theme.palette.custom.accent} 
         circleSize='20px' circleColor='#82CEFD'
-        pillBg='#fff' textSize='18px' text='Human Capital Management'
+        pillBg='#fff' textSize='18px' text='Real Estate'
+        />
+        <Industry 
+        align='' color={theme.palette.custom.accent} 
+        circleSize='20px' circleColor='#FD346E'
+        pillBg='#fff' textSize='18px' text='Finance'
+        />
+        <Industry 
+        align='' color={theme.palette.custom.accent} 
+        circleSize='20px' circleColor='#5956E9'
+        pillBg='#fff' textSize='18px' text='Hospitality'
+        />
+        <Industry 
+        align='' color={theme.palette.custom.accent} 
+        circleSize='20px' circleColor='#82CEFD'
+        pillBg='#fff' textSize='18px' text='Entertainment'
         />
         <Industry 
         align='' color={theme.palette.custom.accent} 
         circleSize='20px' circleColor='#FFDC60'
-        pillBg='#fff' textSize='18px' text='Fed and State GOVT'
+        pillBg='#fff' textSize='18px' text='Non-profit'
         />
-      </Box>
+        <Industry 
+        align='' color={theme.palette.custom.accent} 
+        circleSize='20px' circleColor='#26E78E'
+        pillBg='#fff' textSize='18px' text='Retail'
+        />
+        <Industry 
+        align='' color={theme.palette.custom.accent} 
+        circleSize='20px' circleColor='#FF6F69'
+        pillBg='#fff' textSize='18px' text='Events Management'
+        />
+        </Box>
       </Container>
       
     </Container>
 
 
-    <CTA text="Hi,👋 I am experts in every aspect lifecycle" img={cta1} imgSize='60%' btnIcon={<FileDownloadOutlinedIcon/>} btnText='Download CV'/>
+    <CTA text="Ready to explore my skills further?" img={cta1} imgSize='60%' btnIcon={<FileDownloadOutlinedIcon/>} btnText='Download CV'/>
 
     <Container className='portfolio_section' sx={{padding:'100px 10px'}}>
       <Subheading circle='#FFDC60' color='#000' text='Completed Projects' align='center'/>
@@ -197,22 +207,31 @@ function Home() {
         <Typography variant='h2' color='#fff' marginTop='10px'align="center" marginBottom='40px'>What Client Says</Typography>
               
           <Marquee pauseOnHover={true} style={{padding:'0'}}>
-            <Testimonial img={testimg} name='Sarah Thompson' title='UX Designer' content={
-              `Working with CodexInno was an absolute pleasure! 
-              Their ReactJS skills brought my design concepts to life seamlessly. 
-              The attention to detail and commitment to creating a smooth user experience were remarkable. 
-              I highly recommend CodexInno for anyone seeking a talented and collaborative developer.`
+            <Testimonial img={testimg} name='Charabil' title='from Mozambique' content={
+              `Excellent! I will work with him on the next projects soon. Congratulations on your ability to satisfy and respond to the client's wishes. You master your work.`
             }/>
-            <Testimonial img={testimg} name='Alex Rodriguez' title='Startup Founder' content={
-              `I am beyond impressed with the ReactJS expertise that CodexInno brought to our startup project. 
-              Their ability to tackle complex challenges and deliver high-quality code on time was exceptional. 
-              CodexInno is a reliable and dedicated developer, and I look forward to future collaborations.`
+            <Testimonial img={testimg} name='Claude V.' title='from United Kingdom' content={
+              `It is always a pleasure working with Usman, he is very professional and his attention to detail
+              is meticulous. He has great design skills and will sometimes advice you on an alternative design 
+              that 95% of the time will work for you, i can not recommend him enough! A+++++`
             }/>
-            <Testimonial img={testimg} name='Emily Davis' title='Content Creator' content={
-              `As a content creator, having a visually appealing and user-friendly website is crucial. 
-              CodexInno not only met but exceeded my expectations in developing my ReactJS-based portfolio site. 
-              They understood my vision and implemented it flawlessly.
-              I'm grateful for their creativity and technical proficiency.`
+            <Testimonial img={testimg} name='Nitesh Gupta' title='from India' content={
+              `I had a great experience working with Usman on my WordPress site. He's skilled, detail-oriented, 
+              and highly responsive. He exceeded expectations, offering valuable insights that enhanced the project. 
+              The process was smooth, and he delivered top-quality work on time. 
+              I highly recommend Usman for anyone in need of a talented and reliable WordPress developer.`
+            }/>
+            <Testimonial img={testimg} name='Egrizzly' title='from United States' content={
+              `I've been working with Usman for quite some time now, and I can confidently say that he is an 
+              exceptional WordPress developer. He has become my go-to vendor for all things WordPress, and for good reason.`
+            }/>
+            <Testimonial img={testimg} name='Ianstrom' title='from Canada' content={
+              `It was a great work effort done in a very reasonable amount of time. Will definitely use again and would recommend!`
+            }/>
+            <Testimonial img={testimg} name='Sefe Mark' title='from Australia' content={
+              `Absolutely outstanding experience! Usman not only delivered on time but also exceeded my expectations. 
+              The website is fast, visually stunning, and incredibly user-friendly. Communication was smooth, and all my requests were implemented flawlessly. 
+              Highly recommend for anyone looking for top-tier web development. 5/5 stars!`
             }/>
           </Marquee>
       </Container>
