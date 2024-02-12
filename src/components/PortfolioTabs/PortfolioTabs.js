@@ -21,10 +21,14 @@ export default function PortfolioTabs() {
         sx={{
           background:'#F9FAFB',
           marginBottom:'0',
-          width:'max-content',
+        
           padding: '15px',
           margin:'0 auto'
-          }}>
+          }}
+          
+          variant="scrollable"
+          scrollButtons="auto"        
+          >
         <Tab className={styles.tab_item} label="All" />
         <Tab className={styles.tab_item} label="WordPress" />
         <Tab className={styles.tab_item} label="Shopify" />

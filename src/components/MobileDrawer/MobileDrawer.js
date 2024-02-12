@@ -71,7 +71,7 @@ const MobileDrawer = () => {
     <div>
       
       <Drawer
-        anchor="left"
+        anchor="bottom"
         open={open}
         onClose={toggleDrawer(false)}
         ModalProps={{
