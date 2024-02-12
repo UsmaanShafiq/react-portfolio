@@ -7,6 +7,7 @@ import logo from '../../assets/images/logo.png'
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import {ThemeProvider} from '@mui/material';
+
 import theme from '../../theme';
 
 function Header() {
@@ -15,7 +16,7 @@ function Header() {
   return (
     <ThemeProvider theme={theme}>
       <AppBar position='static' sx={{backgroundColor:'#fff', boxShadow:'none', 
-      padding: {lg: '30px', sm: '20px', xs: '10px'}} }>
+      padding: {lg: '20px', sm: '20px', xs: '10px'}} }>
         <Toolbar>
 
           <Grid container alignItems={'center'} width={'100%'}>
