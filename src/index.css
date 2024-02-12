@@ -30,6 +30,7 @@ body {
 	line-height: 1;
 	box-sizing: border-box;
 	font-family: 'DM Sans', sans-serif;
+	padding-right: 0 !important;
 }
 ol, ul {
 	list-style: none;

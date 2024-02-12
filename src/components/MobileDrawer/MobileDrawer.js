@@ -74,6 +74,11 @@ const MobileDrawer = () => {
         anchor="left"
         open={open}
         onClose={toggleDrawer(false)}
+        ModalProps={{
+        style: {
+          paddingRight: 0,
+        },
+      }}
       >
         {list()}
       </Drawer>
